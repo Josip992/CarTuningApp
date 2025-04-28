@@ -10,6 +10,9 @@ function Navbar(){
             <div className="navbar-links">
                 <Link to="/" className="nav-link">Homepage </Link>
             </div>
+            <div className="navbar-links">
+                <Link to="/authpage" className="nav-link">Authpage </Link>
+            </div>
         </nav>
     )
 }
