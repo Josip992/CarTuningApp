@@ -7,6 +7,7 @@ require("dotenv").config();
 
 const productRoutes = require("./routes/productRoutes");
 const vehicleRoutes = require("./routes/vehicleRoutes");
+const userRoutes = require("./routes/authRoutes.js");
 
 const app = express();
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(cors());
 
 app.use("/api/products", productRoutes);
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/users", userRoutes);
 
 const connectDB = async () => {
   try {
