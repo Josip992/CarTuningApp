@@ -1,21 +1,23 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 const importAllVehicles = require("./utils/importAllVehicles.js");
 const importAllProducts = require("./utils/importAllProducts.js");
 require("dotenv").config();
 
 const productRoutes = require("./routes/productRoutes");
 const vehicleRoutes = require("./routes/vehicleRoutes");
-const userRoutes = require("./routes/authRoutes.js");
+const authRoutes = require("./routes/authRoutes.js");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 app.use("/api/products", productRoutes);
 app.use("/api/vehicles", vehicleRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/auth", authRoutes);
 
 const connectDB = async () => {
   try {
