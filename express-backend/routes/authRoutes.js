@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
+const rateLimiter = require("express-rate-limit");
 
 const createAccessToken = (user) => {
     return jwt.sign({id:user._id}, process.env.JWT_ACCESS_SECRET, {
@@ -15,7 +16,13 @@ const createRefreshToken = (user) => {
     });
 };
 
-router.post("/register", async(req, res) => {
+const authLimiter = rateLimiter({
+    windowMs: 15*60*1000,
+    max:5,
+    message: "Too many attempts, try again later"
+});
+
+router.post("/register", authLimiter, async(req, res) => {
     const {username, email, password} = req.body;
     const userExists = await User.findOne({email});
     if(userExists) return res.status(400).json({message: "Email is used"});
@@ -36,7 +43,7 @@ router.post("/register", async(req, res) => {
         id:user._id, username:user.username, email:user.email }});
 });
 
-router.post("/login", async(req,res) => {
+router.post("/login", authLimiter, async(req,res) => {
     const {username, email, password} = req.body;
     const user = await User.findOne({
         $or: [
@@ -82,7 +89,12 @@ router.post("/refresh", async(req,res) => {
 });
 
 router.get("/logout", async(req, res) => { 
-    res.clearCookie("refreshToken", http);
+    res.clearCookie("refreshToken", {
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE_ENV === "production"
+    });
+    res.status(200).json({message: "Logged out"});
 });
 
 module.exports = router;
