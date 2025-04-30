@@ -13,6 +13,6 @@ function Homepage(){
             {selectedVehicle && <VehicleSpecificProduct/>}
         </div>
     );
-}
+};
 
 export default Homepage;

@@ -14,8 +14,6 @@ function VehicleSpecificProducts() {
         loadCompatibleProducts();
     }, []);
 
-    console.log(compatibleProducts);
-
     return (
         <div>
             {compatibleProducts.map((product, index) => (

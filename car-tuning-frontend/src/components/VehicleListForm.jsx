@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchVehicles, fetchMakes, fetchModels, fetchTypes, fetchEngines } from "../api/vehicleService";
 import { useVehicleContext } from "../contexts/VehicleContext";
+import "../css/VehicleListForm.css";
 
 function VehicleListForm() {
     const {selectedMake, setSelectedMake, selectedModel, setSelectedModel,
@@ -98,118 +99,118 @@ function VehicleListForm() {
         loadEngines();
     }, [selectedType]);
 
-    useEffect(()=>{
-        const loadModels = async () => {
-            if(!selectedModel){
-                 return;
-            };
-            try{
-                const typeList = await fetchTypes(selectedModel);
-                setTypes(typeList);
-           }catch(err){
-                console.log(err);
-                setError(err);
-            }
-        }
-        loadModels();
-    }, [selectedType]);
 
     return(
         <div>
-    {selectedMake && selectedModel && selectedType && selectedEngine ? (
-      <div>
-        <h3>You selected:</h3>
-        <p><strong>Make:</strong> {selectedMake}</p>
-        <p><strong>Model:</strong> {selectedModel}</p>
-        <p><strong>Type:</strong> {selectedType}</p>
-        <p><strong>Engine:</strong> {selectedEngine}</p>
-        <button
-        onClick={changeVehicle}
-        >Change vehicle
-        </button>
-      </div>
+           {selectedMake && selectedModel && selectedType && selectedEngine ? (
+             <div>
+               <h3>You selected:</h3>
+               <p><strong>Make:</strong> {selectedMake}</p>
+               <p><strong>Model:</strong> {selectedModel}</p>
+               <p><strong>Type:</strong> {selectedType}</p>
+               <p><strong>Engine:</strong> {selectedEngine}</p>
+               <button
+               onClick={changeVehicle}
+               >Change vehicle
+               </button>
+             </div>
     ) : (
-      <div>
-        <div>
-          <label>MAKE </label>
-          <select
-            value={selectedMake}
-            onChange={(e) => {
-              setSelectedMake(e.target.value);
-              setSelectedModel("");
-            }}
-          >
-            <option value="">Select make</option>
-            {makes.map((make, index) => (
-              <option key={index} value={make}>
-                {make}
-              </option>
-            ))}
-          </select>
+    <form className="form-row">
+        <div className="input-group">
+        <label htmlFor="make">Make</label>
+        <select
+                    id="make"
+                    name="make"
+                    value={selectedMake}
+                    onChange={(e) => {
+                    setSelectedMake(e.target.value);
+                    setSelectedModel("");
+                    }}
+                >
+                    <option value="">Select make</option>
+                    {makes.map((make, index) => (
+                    <option key={index} value={make}>
+                        {make}
+                    </option>
+                    ))}
+                </select>
         </div>
 
-        {selectedMake && (
-          <div>
-            <label>MODEL </label>
-            <select
-              value={selectedModel}
-              onChange={(e) => {
-                setSelectedModel(e.target.value);
-                setSelectedType("");
-              }}
-            >
-              <option value="">Select model</option>
-              {models.map((model, index) => (
-                <option key={index} value={model}>
-                  {model}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
+    
+    
+           <div className="input-group">
+             <label htmlFor="model">Model </label>
+             <select
+                id="model"
+                name="model"
+                value={selectedModel}
+                onChange={(e) => {
+                 setSelectedModel(e.target.value);
+                 setSelectedType("");
+               }}
+               disabled={!selectedMake}
+             >
+               <option value="">Select model</option>
+               {models.map((model, index) => (
+                 <option key={index} value={model}>
+                   {model}
+                 </option>
+               ))}
+             </select>
+           </div>
+         
+                <div className="input-group">
+                    <label htmlFor="type">Type </label>
+                    <select
+                    id="type"
+                    name="type"
+                    value={selectedType}
+                    onChange={(e) => {
+                        setSelectedType(e.target.value);
+                        setSelectedEngine("");
+                    }}
+                    disabled={!selectedModel}
+                    >
+                    <option value="">Select type</option>
+                    {types.map((type, index) => (
+                        <option key={index} value={type}>
+                        {type}
+                        </option>
+                    ))}
+                    </select>
+                </div>
 
-        {selectedModel && (
-          <div>
-            <label>TYPE </label>
-            <select
-              value={selectedType}
-              onChange={(e) => {
-                setSelectedType(e.target.value);
-                setSelectedEngine("");
-              }}
-            >
-              <option value="">Select type</option>
-              {types.map((type, index) => (
-                <option key={index} value={type}>
-                  {type}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-
-        {selectedType && (
-          <div>
-            <label>ENGINE </label>
-            <select
-              value={selectedEngine}
-              onChange={(e) => {
-                setSelectedEngine(e.target.value);
-              }}
-            >
-              <option value="">Select engine</option>
-              {engines.map((engine, index) => (
-                <option key={index} value={engine}>
-                  {engine}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
-      </div>
+                             <div className="input-group">
+                               <label htmlFor="engine">Engine </label>
+                               <select
+                                 id="engine"
+                                 name="engine"
+                                 value={selectedEngine}
+                                 onChange={(e) => {
+                                   setSelectedEngine(e.target.value);
+                                 }}
+                                 disabled={!selectedType}
+                               >
+                                 <option value="">Select engine</option>
+                                 {engines.map((engine, index) => (
+                                   <option key={index} value={engine}>
+                                     {engine}
+                                   </option>
+                                 ))}
+                               </select>
+                             </div>
+                 
+    </form>
     )}
-  </div> 
-    );
+    </div>
+
+);
 }
+
+{/*
+<div className="submit-group">
+<button type="submit">Submit form</button>
+</div> */}
+
 
 export default VehicleListForm;
