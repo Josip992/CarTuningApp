@@ -35,7 +35,7 @@ router.post("/register", authLimiter, async(req, res) => {
 
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: proccess.env.NODE_ENV === "production",
+        secure: process.env.NODE_ENV === "production",
         sameSite: "Strict",
         maxAge: 7*24*60*1000
     });
@@ -64,7 +64,7 @@ router.post("/login", authLimiter, async(req,res) => {
     
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
-        secure: proccess.env.NODE_ENV === "production",
+        secure: process.env.NODE_ENV === "production",
         sameSite: "Strict",
         maxAge: 7*24*60*1000
     });
@@ -78,10 +78,10 @@ router.post("/refresh", async(req,res) => {
     if(!cookies?.refreshToken) return res.status(401).json({message: "No refresh token"});
 
     const refreshToken = cookies.refreshToken;
-    const user = User.findOne({refreshToken});
+    const user = await User.findOne({refreshToken});
     if(!user) return res.status(403).json({message: "Forbidden"});
 
-    jwt.verify(refreshToken, proccess.env.JWT_REFRESH_SECRET, (err,decoded)=> {
+    jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET, (err,decoded)=> {
         if(err || user._id.toString() !== decoded.id) return res.status(403).json({message:"Forbidden"});
         const accessToken = createAccessToken(user);
         return res.json({accessToken});
