@@ -10,11 +10,8 @@ function Navbar(){
             <div className="navbar-brand">
                 <Link to="/" className="navbar-brand">Car Tuning</Link>
             </div>
-            <div className="navbar-links">
-                <Link to="/" className="nav-link">Homepage </Link>
-            </div>
             {user ? (
-                <div className="navbar-links">
+                <div>
                 <button onClick={logout}>LOGOUT</button>
             </div>
             ):(

@@ -103,17 +103,18 @@ function VehicleListForm() {
     return(
         <div>
            {selectedMake && selectedModel && selectedType && selectedEngine ? (
+             <div className="form-row vehicle-summary">
+                <div>
+                    Selected vehicle:
+                </div>
              <div>
-               <h3>You selected:</h3>
-               <p><strong>Make:</strong> {selectedMake}</p>
-               <p><strong>Model:</strong> {selectedModel}</p>
-               <p><strong>Type:</strong> {selectedType}</p>
-               <p><strong>Engine:</strong> {selectedEngine}</p>
-               <button
-               onClick={changeVehicle}
-               >Change vehicle
-               </button>
+               {selectedMake} {selectedType} {selectedEngine}
              </div>
+             <div className="input-group submit-group">
+               <button onClick={changeVehicle}>Change vehicle</button>
+             </div>
+           </div>
+           
     ) : (
     <form className="form-row">
         <div className="input-group">
@@ -135,11 +136,11 @@ function VehicleListForm() {
                     ))}
                 </select>
         </div>
-
-    
-    
+        
            <div className="input-group">
-             <label htmlFor="model">Model </label>
+             <label htmlFor="model"
+             className={selectedMake ? "" : "label-disabled"}
+             >Model </label>
              <select
                 id="model"
                 name="model"
@@ -160,7 +161,9 @@ function VehicleListForm() {
            </div>
          
                 <div className="input-group">
-                    <label htmlFor="type">Type </label>
+                    <label htmlFor="type"
+                    className={selectedModel ? "" : "label-disabled"}
+                    >Type </label>
                     <select
                     id="type"
                     name="type"
@@ -181,7 +184,9 @@ function VehicleListForm() {
                 </div>
 
                              <div className="input-group">
-                               <label htmlFor="engine">Engine </label>
+                               <label htmlFor="engine"
+                               className={selectedType ? "" : "label-disabled"}
+                               >Engine </label>
                                <select
                                  id="engine"
                                  name="engine"
@@ -199,18 +204,16 @@ function VehicleListForm() {
                                  ))}
                                </select>
                              </div>
-                 
+
+            <div className="input-group submit-group">
+            <button onClick={changeVehicle}>Reset</button>
+            </div>      
     </form>
     )}
     </div>
 
 );
 }
-
-{/*
-<div className="submit-group">
-<button type="submit">Submit form</button>
-</div> */}
 
 
 export default VehicleListForm;
