@@ -9,18 +9,26 @@
     border-radius: 5px;
     margin-top: 15px;
     }
+    .vehicle-summary{
+        border: 1px solid #333;
+        padding: 15px;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 5px;
+        margin-top: 15px; 
+    }
     .form-row{
         display: flex;
         gap: 10px;
         flex-wrap: wrap;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
     }
     .input-group {
     display: flex;
     margin-bottom: 10px;
     flex-direction: column;
-    width: 150px;
+    width: 130px;
     }
     .input-group:last-child{
         margin-bottom: 0;
@@ -38,15 +46,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
     }
     button {
-    width: 150px;
     margin: 0 auto;
     background-color: black;
     color: white;
     border: none;
-    padding: 8px;
+    padding: 6px;
     cursor: pointer;
     border-radius: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+    .label-disabled{
+        opacity: 0.5;
+    }
+    .category-list, .product-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 20px;
+    }
+      
+    .category-card,
+    .product-card {
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+
+    width: 180px;           
+    height: 120px;          
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    .category-card:hover, .product-card:hover {
+        background-color: #f2f2f2;
     }
