@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 import { loginUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
-
+import "../css/Auth.css"
 function LoginPage(){
     const { login } = useAuthContext();
 
@@ -27,7 +27,9 @@ function LoginPage(){
     
     return (
         <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}
+            className="auth-form"
+        >
             <h2>Login</h2>
             {error && <p>{error}</p>}
             <input

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 import { loginUser, registerUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
+import "../css/Auth.css"
 
 function LoginPage(){
     const { register } = useAuthContext();
@@ -27,7 +28,9 @@ function LoginPage(){
     
     return (
         <div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}
+        className="auth-form"
+        >
             <h2>Register</h2>
             {error && <p>{error}</p>}
             <input
