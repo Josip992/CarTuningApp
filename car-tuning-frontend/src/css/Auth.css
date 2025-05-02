@@ -1,0 +1,12 @@
+.auth-form{
+    width: 400px;
+    text-align: center;
+}
+
+.auth-form label,
+.auth-form input{
+    margin-bottom: 0.35rem;
+}
+.auth-form button {
+  margin-top: 0.65rem;
+}

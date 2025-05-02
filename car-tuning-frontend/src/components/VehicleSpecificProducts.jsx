@@ -8,6 +8,8 @@ function VehicleSpecificProducts() {
     const [compatibleProducts, setCompatibleProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const categories = [...new Set(compatibleProducts.map(p => p.category))];
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(()=>{
         const loadCompatibleProducts = async () => {
@@ -21,15 +23,39 @@ function VehicleSpecificProducts() {
         <div>
             {!selectedCategory ? (
             <div className="category-list">
+                
                 {categories.map((category, idx) => (
                 <div
                     key={idx}
                     className="vehicle-summary category-card"
                     onClick={() => setSelectedCategory(category)}
-                >
-                    {category}
+                    >
+                    {!loaded && !error && (
+                        <div className="image-loader">
+                            <div className="spinner"></div>
+                        </div>
+                    )}
+                    {error && (
+                        <div className="image-error">❌</div>
+                    )}
+                    {!error && (
+                        <div>
+                        <img
+                        src={`/images/${category}.jpg`}
+                        className="category-image"
+                        //style={{display: loaded ? "block": "none"}}
+                        onLoad={()=>setLoaded(true)}
+                        onError={()=>{
+                            setError(true);
+                            setLoaded(false);
+                        }}
+                        />
+                        <div className="category-label">{category}</div>
+                        </div>
+                    )}
                 </div>
                 ))}
+
             </div>
             ) : (
             <div className="product-list">
