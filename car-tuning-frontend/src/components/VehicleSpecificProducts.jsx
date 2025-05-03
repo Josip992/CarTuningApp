@@ -8,8 +8,6 @@ function VehicleSpecificProducts() {
     const [compatibleProducts, setCompatibleProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const categories = [...new Set(compatibleProducts.map(p => p.category))];
-    const [loaded, setLoaded] = useState(false);
-    const [error, setError] = useState(false);
 
     useEffect(()=>{
         const loadCompatibleProducts = async () => {
@@ -19,52 +17,47 @@ function VehicleSpecificProducts() {
         loadCompatibleProducts();
     }, []);
 
+    const formatFileName = (name) =>
+        name.toString().toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
+
     return (
         <div>
             {!selectedCategory ? (
             <div className="category-list">
-                
                 {categories.map((category, idx) => (
                 <div
                     key={idx}
                     className="vehicle-summary category-card"
                     onClick={() => setSelectedCategory(category)}
                     >
-                    {!loaded && !error && (
-                        <div className="image-loader">
-                            <div className="spinner"></div>
-                        </div>
-                    )}
-                    {error && (
-                        <div className="image-error">❌</div>
-                    )}
-                    {!error && (
                         <div>
                         <img
-                        src={`/images/${category}.jpg`}
+                        src={`/images/categories/${category}.jpg`}
                         className="category-image"
-                        //style={{display: loaded ? "block": "none"}}
-                        onLoad={()=>setLoaded(true)}
-                        onError={()=>{
-                            setError(true);
-                            setLoaded(false);
-                        }}
                         />
                         <div className="category-label">{category}</div>
                         </div>
-                    )}
                 </div>
                 ))}
-
             </div>
             ) : (
             <div className="product-list">
                 {compatibleProducts
                 .filter(p => p.category === selectedCategory)
                 .map((product, index) => (
-                    <div key={index} className="vehicle-summary product-card">
-                    <h3>{product.name}</h3>
-                    <p>Price: ${product.price}</p>
+                    <div
+                     key={index}
+                    className="vehicle-summary category-card">
+                    <div>
+                        <img
+                        src={`/images/products/${formatFileName(product.name)}.jpg`}
+                        className="category-image"
+                        />
+                        <div className="product-label">
+                            {product.name}
+                        <p>Price: ${product.price}</p>
+                        </div>
+                        </div>
                     </div>
                 ))}
                 <button onClick={() => setSelectedCategory(null)}>Categories</button>
