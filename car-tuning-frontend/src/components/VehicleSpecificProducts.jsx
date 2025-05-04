@@ -24,10 +24,10 @@ function VehicleSpecificProducts() {
         <div>
             {!selectedCategory ? (
             <div className="category-list">
-                {categories.map((category, idx) => (
+                {categories.map((category, index) => (
                 <div
-                    key={idx}
-                    className="vehicle-summary category-card"
+                    key={index}
+                    className="category-card"
                     onClick={() => setSelectedCategory(category)}
                     >
                         <div>
@@ -41,13 +41,32 @@ function VehicleSpecificProducts() {
                 ))}
             </div>
             ) : (
-            <div className="product-list">
+            <div className="product-layout">
+                <div className="category-sidebar">
+                    <div
+                        onClick={() => setSelectedCategory(null)}
+                        className="category-item"
+                        >All categories
+                    </div>
+                        {categories.map((category, index) =>(
+                            <div
+                            key={index}
+                            className=""
+                            onClick={()=>setSelectedCategory(category)}
+                            >
+                                <div className="category-item">
+                                    {category}
+                                </div>   
+                            </div>
+                        ))}
+                </div>
+                <div className="product-list"> 
                 {compatibleProducts
                 .filter(p => p.category === selectedCategory)
                 .map((product, index) => (
                     <div
                      key={index}
-                    className="vehicle-summary category-card">
+                    className="product-card">
                     <div>
                         <img
                         src={`/images/products/${formatFileName(product.name)}.jpg`}
@@ -60,7 +79,7 @@ function VehicleSpecificProducts() {
                         </div>
                     </div>
                 ))}
-                <button onClick={() => setSelectedCategory(null)}>Categories</button>
+                </div>   
             </div>
             )}
         </div>

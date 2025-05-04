@@ -13,8 +13,6 @@ function VehicleListForm() {
     const [types, setTypes] = useState([]);
     const [engines, setEngines] = useState([]);
 
-    
-
     const [error, setError] = useState(null);
 
     const changeVehicle = () => {
@@ -111,7 +109,10 @@ function VehicleListForm() {
                {selectedMake} {selectedType} {selectedEngine}
              </div>
              <div className="input-group submit-group">
-               <button onClick={changeVehicle}>Change vehicle</button>
+               <button 
+               onClick={changeVehicle}
+               className="button-default"
+               >Change vehicle</button>
              </div>
            </div>
            
@@ -206,7 +207,10 @@ function VehicleListForm() {
                              </div>
 
             <div className="input-group submit-group">
-            <button onClick={changeVehicle}>Reset</button>
+            <button 
+            onClick={changeVehicle}
+            className="button-default"
+            >Reset</button>
             </div>      
     </form>
     )}

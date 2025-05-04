@@ -12,6 +12,24 @@
       "price": 50
     },
     {
+      "name": "Cleaning Kit",
+      "category": "Cleaning",
+      "compatibility": "all",
+      "price": 500
+    },
+    {
+      "name": "Cleaning Kit 2",
+      "category": "Cleaning",
+      "compatibility": "all",
+      "price": 500
+    },
+    {
+      "name": "Cleaning Kit 3",
+      "category": "Cleaning",
+      "compatibility": "all",
+      "price": 500
+    },
+    {
       "name": "Sport Exhaust System",
       "category": "Performance",
       "variants": [

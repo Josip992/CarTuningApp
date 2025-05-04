@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #000000;
+  background-color: #1d1d1d;
   padding: 0.5rem 2rem;
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@
 }
 
 .navbar-brand:active {
-  color:blue;
+  color:white;
 }
 
 .navbar-links {
@@ -36,7 +36,7 @@
 }
 
 .nav-link:active {
-  color:blue;
+  color:white;
 }
 
 @media (max-width: 768px) {
