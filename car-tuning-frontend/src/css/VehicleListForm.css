@@ -2,12 +2,12 @@
         box-sizing: border-box;
     }
     form {
-    border: 1px solid #333;
-    padding: 15px;
-    max-width: 800px;
-    margin: 0 auto;
-    border-radius: 5px;
-    margin-top: 15px;
+        border: 1px solid #333;
+        padding: 15px;
+        max-width: 800px;
+        margin: 0 auto;
+        border-radius: 5px;
+        margin-top: 15px;
     }
     .vehicle-summary{
         border: 1px solid #333;
@@ -26,41 +26,55 @@
         align-items: center;
     }
     .input-group {
-    display: flex;
-    margin-bottom: 10px;
-    flex-direction: column;
-    width: 130px;
+        display: flex;
+        margin-bottom: 10px;
+        flex-direction: column;
+        width: 130px;
     }
     .input-group:last-child{
         margin-bottom: 0;
     }
     label {
-    width: 100px;
+        width: 100px;
     }
     input,
     select,
     textarea {
-    padding: 3px 5px;
-    width: 100%;
+        padding: 3px 5px;
+        width: 100%;
     }
     .submit-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .button-default {
-    margin: 0 auto;
-    background-color: rgb(31, 31, 31);
-    color: white;
-    border: none;
-    padding: 6px;
-    cursor: pointer;
-    border-radius: 5px;
-    white-space: nowrap;
-    overflow: hidden;
+        margin: 0 auto;
+        background-color: rgb(42, 42, 42);
+        color: white;
+        border: none;
+        padding: 6px;
+        cursor: pointer;
+        border-radius: 5px;
+        white-space: nowrap;
+        overflow: hidden;
     }
-    .button-default:hover{
+    .button-default:hover {
+        background-color: rgb(67, 67, 67);
+    }
+    .button-navbar {
+        margin: 0 auto;
         background-color: rgb(116, 116, 116);
+        color: rgb(255, 255, 255);
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        white-space: nowrap;
+        overflow: hidden; 
+    }
+    .button-navbar:hover{
+        background-color: rgb(146, 146, 146);
     }
     .label-disabled {
         opacity: 0.5;
@@ -76,7 +90,8 @@
         display: flex;      
         flex-wrap: wrap;
         align-items: center;
-        
+        max-width: 920px;
+        gap: 10px;
     }
     .product-layout {
         display: flex;
@@ -96,13 +111,10 @@
         border-radius: 8px;
         box-shadow: 0 0 3px;
         overflow: hidden;
-        
-        
     }
     .product-card {
+        justify-content: flex-start;
         cursor: pointer;
-        margin-left: 50px;
-        margin-bottom: 20px;
         transition: background-color 0.2s;
         text-align: center;
         width: 300px;           
@@ -122,6 +134,8 @@
     .category-image {
         width: 100%;
         height: 100%;
+        object-fit: cover;
+        display: block;
     }
     .category-label {
         position: absolute;
@@ -135,8 +149,8 @@
         font-weight: 300;
         font-size: larger;
         border-radius: 5px;
-      }
-      .product-label {
+    }
+    .product-label {
         position: absolute;
         top: 70%;
         left: 0%;
@@ -147,8 +161,8 @@
         padding: 0.5rem;
         font-weight: 300;
         font-size:large;
-      }
-      .category-sidebar {
+    }
+    .category-sidebar {
         gap: 10px;
         align-items: center;
         display: flex;
@@ -161,10 +175,10 @@
         padding: 15px;
         cursor: pointer;
         margin-bottom: 20px;
-      }
-      .category-item:hover {
+    }
+    .category-item:hover {
         background-color: rgb(208, 207, 207);
         border-radius: 5px;
         text-decoration: underline;
         transition: background-color 0.3s ease-in;
-      }
+    }
