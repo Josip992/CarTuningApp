@@ -61,24 +61,24 @@ function VehicleSpecificProducts() {
                         ))}
                 </div>
                 <div className="product-list"> 
-                {compatibleProducts
-                .filter(p => p.category === selectedCategory)
-                .map((product, index) => (
-                    <div
-                     key={index}
-                    className="product-card">
-                    <div>
-                        <img
-                        src={`/images/products/${formatFileName(product.name)}.jpg`}
-                        className="category-image"
-                        />
-                        <div className="product-label">
-                            {product.name}
-                        <p>Price: ${product.price}</p>
-                        </div>
-                        </div>
-                    </div>
-                ))}
+                    {compatibleProducts
+                    .filter(p => p.category === selectedCategory)
+                    .map((product, index) => (
+                        <div
+                            key={index}
+                            className="product-card">
+                            <div>
+                                <img
+                                src={`/images/products/${formatFileName(product.name)}.jpg`}
+                                className="category-image"
+                                />
+                                <div className="product-label">
+                                    {product.name}
+                                    <p>Price: ${product.price}</p>
+                                </div>
+                                </div>
+                            </div>
+                        ))}
                 </div>   
             </div>
             )}

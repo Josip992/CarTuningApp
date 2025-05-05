@@ -50,10 +50,14 @@ function LoginPage(){
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
             />
-            <button type="submit">Login</button>
+            <button 
+            type="submit"
+            className="button-default"
+            >Login</button>
         </form>
         </div>
     );
 };
 
 export default LoginPage;
+

@@ -51,7 +51,10 @@ function LoginPage(){
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
             />
-            <button type="submit">Register</button>
+            <button 
+            type="submit"
+            className="button-default"
+            >Register</button>
         </form>
         </div>
     );
