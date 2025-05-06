@@ -11,7 +11,7 @@ function LoginPage(){
     const [ email, setEmail ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ error, setError ] = useState("");
-
+    const [ showPasssword, setShowPassword ] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async(e) => {
@@ -29,7 +29,7 @@ function LoginPage(){
     return (
         <div>
         <form onSubmit={handleSubmit}
-        className="auth-form"
+            className="auth-form"
         >
             <h2>Register</h2>
             {error && <p>{error}</p>}
@@ -45,12 +45,20 @@ function LoginPage(){
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
             />
-            <input 
-                type="text"
-                placeholder="password"
-                value={password}
-                onChange={(e)=>setPassword(e.target.value)}
-            />
+            <div className="password-wrapper">
+                <input 
+                    type={showPasssword ? "text" : "password"}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
+                />
+                <button
+                type="button"
+                className="hide-pass-btn"
+                onClick={()=> setShowPassword((prev) => !prev)}>
+                    {showPasssword ? "🫣":"👁️"}
+                </button>
+            </div>
             <button 
             type="submit"
             className="button-default"
