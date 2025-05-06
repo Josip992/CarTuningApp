@@ -3,20 +3,20 @@ import { useAuthContext } from "../contexts/AuthContext";
 import { loginUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
 import "../css/Auth.css"
+
 function LoginPage(){
     const { login } = useAuthContext();
 
-    const [ username, setUsername ] = useState("");
-    const [ email, setEmail ] = useState("");
+    const [ identifier, setIdentifier ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ error, setError ] = useState("");
-
+    const [ showPasssword, setShowPassword] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
-            const response = await loginUser(username, email, password);
+            const response = await loginUser(identifier, password);
             login(response.user, response.accessToken);
             navigate("/");
         } catch (err) {
@@ -34,26 +34,28 @@ function LoginPage(){
             {error && <p>{error}</p>}
             <input
                 type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e)=>setUsername(e.target.value)}
+                placeholder="Username or email"
+                value={identifier}
+                onChange={(e)=>setIdentifier(e.target.value)}
             />
-            <input 
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(e)=>setEmail(e.target.value)}
-            />
-            <input 
-                type="text"
-                placeholder="password"
-                value={password}
-                onChange={(e)=>setPassword(e.target.value)}
-            />
+            <div className="password-wrapper">
+                <input 
+                    type={showPasssword ? "text" : "password"}
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e)=>setPassword(e.target.value)}
+                />
+                <button
+                type="button"
+                className="hide-pass-btn"
+                onClick={()=> setShowPassword((prev) => !prev)}>
+                    {showPasssword ? "🫣":"👁️"}
+                </button>
+            </div>
             <button 
             type="submit"
             className="button-default"
-            >Login</button>
+            >Login</button>   
         </form>
         </div>
     );

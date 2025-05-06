@@ -44,13 +44,15 @@ router.post("/register", authLimiter, async(req, res) => {
 });
 
 router.post("/login", authLimiter, async(req,res) => {
-    const {username, email, password} = req.body;
+    const {identifier, password} = req.body;
+
     const user = await User.findOne({
         $or: [
-            {username},
-            {email}
+            {username: identifier},
+            {email: identifier}
         ]
     });
+    
     if(!user || !(await user.comparePassword(password))){
         return res.status(401).json({
             message: "Invalid credentials"
@@ -61,7 +63,7 @@ router.post("/login", authLimiter, async(req,res) => {
 
     user.refreshToken = refreshToken;
     await user.save();
-    
+
     res.cookie("refreshToken", refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",

@@ -1,9 +1,9 @@
 import axios from "axios";
 const API_BASE = "http://localhost:5000/api/auth"
 
-export const loginUser = async(username, email, password) => {
+export const loginUser = async(identifier, password) => {
     console.log("loginUser called");
-    const response = await axios.post(API_BASE + "/login", {username, email, password});
+    const response = await axios.post(API_BASE + "/login", {identifier, password});
     return response.data;
 };
 
