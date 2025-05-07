@@ -4,6 +4,8 @@ const User = require("../models/User");
 const jwt = require("jsonwebtoken");
 const rateLimiter = require("express-rate-limit");
 
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+
 const createAccessToken = (user) => {
     return jwt.sign({id:user._id}, process.env.JWT_ACCESS_SECRET, {
         expiresIn: "15m"
@@ -25,7 +27,10 @@ const authLimiter = rateLimiter({
 router.post("/register", authLimiter, async(req, res) => {
     const {username, email, password} = req.body;
     const userExists = await User.findOne({email});
-    if(userExists) return res.status(400).json({message: "Email is used"});
+    
+    if(userExists) return res.status(400).json({message: "User already exists"});
+
+    if(!passwordRegex.test(password)) return res.status(400).json({message: "Password has to have minimum 12 characters, at least 1 upper and lower case, special sign and 1 number"});
 
     const user = await User.create({ username, email, password});
     const accessToken = createAccessToken(user);

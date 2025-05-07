@@ -20,6 +20,14 @@ const ProductSchema = new mongoose.Schema({
   price: {
     type: Number 
   },
+  sku: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  stock: {
+    type: Number
+  },
   variants: {
     type: [
       {
@@ -28,7 +36,8 @@ const ProductSchema = new mongoose.Schema({
       }
     ],
     default: undefined,
-  }
+  },
+  createdAt: {type: Date, default: Date.now}
 });
 
 
