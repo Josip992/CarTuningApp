@@ -3,31 +3,36 @@
       "name": "Exterior Cleaning Kit",
       "category": "Cleaning",
       "compatibility": "all",
-      "price": 50
+      "price": 50,
+      "stock": 100
     },
     {
       "name": "Interior Cleaning Kit",
       "category": "Cleaning",
       "compatibility": "all",
-      "price": 50
+      "price": 50,
+      "stock": 100
     },
     {
       "name": "Cleaning Kit",
       "category": "Cleaning",
       "compatibility": "all",
-      "price": 500
+      "price": 500,
+      "stock": 100
     },
     {
       "name": "Cleaning Kit 2",
       "category": "Cleaning",
       "compatibility": "all",
-      "price": 500
+      "price": 200,
+      "stock": 100
     },
     {
       "name": "Cleaning Kit 3",
       "category": "Cleaning",
       "compatibility": "all",
-      "price": 500
+      "price": 33,
+      "stock": 100
     },
     {
       "name": "Sport Exhaust System",
@@ -35,75 +40,93 @@
       "variants": [
         {
           "model": "E21 (1975\u20131983)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E30 (1982\u20131994)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E36 (1990\u20132000)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "E46 (1998\u20132006)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E90/E91/E92/E93 (2005\u20132013)/E91/E92/E93",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "E28 (1981\u20131988)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E34 (1988\u20131996)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "E39 (1995\u20132003)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E60/E61 (2003\u20132010)/E61",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "E23 (1977\u20131986)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E32 (1986\u20131994)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "E38 (1994\u20132001)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E65/E66 (2001\u20132008)/E66",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "E81/E82/E87/E88 (2004\u20132013)/E82/E87/E88",
-          "price": 400
+          "price": 400,
+          "stock": 400
         },
         {
           "model": "E53 (1999\u20132006)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E70 (2006\u20132013)",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "Z3 (1995\u20132002)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "Z4 (E85/E86, 2002\u20132008)",
-          "price": 350
+          "price": 350,
+          "stock": 350
         }
       ]
     },
@@ -113,75 +136,93 @@
       "variants": [
         {
           "model": "E21 (1975\u20131983)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E30 (1982\u20131994)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E36 (1990\u20132000)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "E46 (1998\u20132006)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E90/E91/E92/E93 (2005\u20132013)/E91/E92/E93",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "E28 (1981\u20131988)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E34 (1988\u20131996)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "E39 (1995\u20132003)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E60/E61 (2003\u20132010)/E61",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "E23 (1977\u20131986)",
-          "price": 200
+          "price": 200,
+          "stock": 200
         },
         {
           "model": "E32 (1986\u20131994)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "E38 (1994\u20132001)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E65/E66 (2001\u20132008)/E66",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "E81/E82/E87/E88 (2004\u20132013)/E82/E87/E88",
-          "price": 400
+          "price": 400,
+          "stock": 400
         },
         {
           "model": "E53 (1999\u20132006)",
-          "price": 300
+          "price": 300,
+          "stock": 300
         },
         {
           "model": "E70 (2006\u20132013)",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "Z3 (1995\u20132002)",
-          "price": 250
+          "price": 250,
+          "stock": 250
         },
         {
           "model": "Z4 (E85/E86, 2002\u20132008)",
-          "price": 350
+          "price": 350,
+          "stock": 350
         }
       ]
       
@@ -192,75 +233,93 @@
       "variants": [
         {
           "model": "E21 (1975\u20131983)",
-          "price": 500
+          "price": 500,
+          "stock": 500
         },
         {
           "model": "E30 (1982\u20131994)",
-          "price": 600
+          "price": 600,
+          "stock": 600
         },
         {
           "model": "E36 (1990\u20132000)",
-          "price": 400
+          "price": 400,
+          "stock": 400
         },
         {
           "model": "E46 (1998\u20132006)",
-          "price": 450
+          "price": 450,
+          "stock": 450
         },
         {
           "model": "E90/E91/E92/E93 (2005\u20132013)/E91/E92/E93",
-          "price": 450
+          "price": 450,
+          "stock": 450
         },
         {
           "model": "E28 (1981\u20131988)",
-          "price": 500
+          "price": 500,
+          "stock": 500
         },
         {
           "model": "E34 (1988\u20131996)",
-          "price": 450
+          "price": 450,
+          "stock": 450
         },
         {
           "model": "E39 (1995\u20132003)",
-          "price": 350
+          "price": 350,
+          "stock": 350
         },
         {
           "model": "E60/E61 (2003\u20132010)/E61",
-          "price": 450
+          "price": 450,
+          "stock": 450
         },
         {
           "model": "E23 (1977\u20131986)",
-          "price": 500
+          "price": 500,
+          "stock": 500
         },
         {
           "model": "E32 (1986\u20131994)",
-          "price": 500
+          "price": 500,
+          "stock": 500
         },
         {
           "model": "E38 (1994\u20132001)",
-          "price": 400
+          "price": 400,
+          "stock": 400
         },
         {
           "model": "E65/E66 (2001\u20132008)/E66",
-          "price": 450
+          "price": 450,
+          "stock": 450
         },
         {
           "model": "E81/E82/E87/E88 (2004\u20132013)/E82/E87/E88",
-          "price": 500
+          "price": 500,
+          "stock": 500
         },
         {
           "model": "E53 (1999\u20132006)",
-          "price": 400
+          "price": 400,
+          "stock": 400
         },
         {
           "model": "E70 (2006\u20132013)",
-          "price": 400
+          "price": 400,
+          "stock": 400
         },
         {
           "model": "Z3 (1995\u20132002)",
-          "price": 550
+          "price": 550,
+          "stock": 550
         },
         {
           "model": "Z4 (E85/E86, 2002\u20132008)",
-          "price": 350
+          "price": 350,
+          "stock": 350
         }
       ]
     }

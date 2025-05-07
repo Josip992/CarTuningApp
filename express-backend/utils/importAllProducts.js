@@ -1,6 +1,12 @@
 const fs = require("fs");
 const Product = require("../models/Product"); 
 
+function generateSku(product) {
+  const namePart = product.name.replace(/\s+/g, '-').toUpperCase().slice(0, 10);
+  const timestamp = Date.now().toString().slice(-6); 
+  return `${namePart}-${timestamp}`;
+}
+
 async function importAllProducts() {
   try {
     const files = fs.readdirSync("./json/productList");
@@ -18,12 +24,17 @@ async function importAllProducts() {
                   name: product.name,
                   category: product.category,
                   compatibility: product.compatibility,
-                  price: product.price
+                  price: product.price,
+                  sku: generateSku(product),
+                  stock: product.stock,
+                  createdAt: new Date()
                 }
               },
               { upsert: true }
             );
           } else if (product.variants) {
+            
+            console.log(product.variants);
             await Product.updateOne(
               { fits, name: product.name },
               {
@@ -31,7 +42,12 @@ async function importAllProducts() {
                   fits,
                   name: product.name,
                   category: product.category,
-                  variants: product.variants
+                  variants: product.variants.map((variant)=>({
+                    ...variant,
+                    sku: generateSku(product),
+                    stock: product.stock
+                  })),
+                  createdAt: new Date()
                 }
               },
               { upsert: true }
