@@ -1,11 +1,33 @@
 const fs = require("fs");
 const Product = require("../models/Product"); 
 
-function generateSku(product) {
-  const namePart = product.name.replace(/\s+/g, '-').toUpperCase().slice(0, 10);
-  const timestamp = Date.now().toString().slice(-6); 
-  return `${namePart}-${timestamp}`;
+function generateSKU(product, variantModel = null) {
+  const slugify = (str) =>
+    str
+      .toUpperCase()
+      .replace(/[^A-Z0-9]+/g, '-') 
+      .replace(/(^-|-$)/g, '');
+
+  const shortName = product.name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase(); 
+
+  const categoryCode = slugify(product.category).slice(0, 5); 
+
+  if (variantModel) {
+    console.log("variantModel: " + variantModel);
+    const modelCode = variantModel.split(' ')[0].toUpperCase();
+    console.log("sku: " + categoryCode + shortName + modelCode);
+
+    return `${categoryCode}-${shortName}-${modelCode}`;
+  } else {
+    console.log("sku: " + categoryCode + shortName);
+    return `${categoryCode}-${shortName}`;
+  }
 }
+
 
 async function importAllProducts() {
   try {
@@ -25,7 +47,7 @@ async function importAllProducts() {
                   category: product.category,
                   compatibility: product.compatibility,
                   price: product.price,
-                  sku: generateSku(product),
+                  sku: generateSKU(product),
                   stock: product.stock,
                   createdAt: new Date()
                 }
@@ -33,8 +55,8 @@ async function importAllProducts() {
               { upsert: true }
             );
           } else if (product.variants) {
-            
-            console.log(product.variants);
+            const sku = generateSKU(product, );
+            //console.log(product.variants);
             await Product.updateOne(
               { fits, name: product.name },
               {
@@ -44,8 +66,8 @@ async function importAllProducts() {
                   category: product.category,
                   variants: product.variants.map((variant)=>({
                     ...variant,
-                    sku: generateSku(product),
-                    stock: product.stock
+                    sku: generateSKU(product, variant.model),
+                    stock: variant.stock
                   })),
                   createdAt: new Date()
                 }
