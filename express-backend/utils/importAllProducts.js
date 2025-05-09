@@ -17,13 +17,9 @@ function generateSKU(product, variantModel = null) {
   const categoryCode = slugify(product.category).slice(0, 5); 
 
   if (variantModel) {
-    console.log("variantModel: " + variantModel);
     const modelCode = variantModel.split(' ')[0].toUpperCase();
-    console.log("sku: " + categoryCode + shortName + modelCode);
-
     return `${categoryCode}-${shortName}-${modelCode}`;
   } else {
-    console.log("sku: " + categoryCode + shortName);
     return `${categoryCode}-${shortName}`;
   }
 }
@@ -36,8 +32,12 @@ async function importAllProducts() {
       if (file.endsWith(".json")) {
         const data = JSON.parse(fs.readFileSync("./json/productList/"+file, "utf8"));
         const fits = file.split("_")[0].toUpperCase();
-        for (const product of data) {
-          if (product.compatibility) {
+        const uniqueData = data.filter(
+          (product, index, self) =>
+            index === self.findIndex(p => p.name === product.name)
+        );
+        for (const product of uniqueData) {
+          if (product.compatibility) {       
             await Product.updateOne(
               { fits, name: product.name }, 
               {
@@ -55,8 +55,11 @@ async function importAllProducts() {
               { upsert: true }
             );
           } else if (product.variants) {
-            const sku = generateSKU(product, );
-            //console.log(product.variants);
+            product.variants = product.variants.filter(
+              (variant, index, self) =>
+                index === self.findIndex(v => v.model === variant.model)
+            );
+            console.log(product.variants);
             await Product.updateOne(
               { fits, name: product.name },
               {
@@ -65,7 +68,8 @@ async function importAllProducts() {
                   name: product.name,
                   category: product.category,
                   variants: product.variants.map((variant)=>({
-                    ...variant,
+                    model: variant.model,
+                    price: variant.price,
                     sku: generateSKU(product, variant.model),
                     stock: variant.stock
                   })),

@@ -14,28 +14,19 @@ const ProductSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  compatibility: {
-    type: String 
-  },
-  price: {
-    type: Number 
-  },
-  sku: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  stock: {
-    type: Number
-  },
+  compatibility: String,
+  price: Number,
+  sku: String,
+  stock: Number,
   variants: {
     type: [
       {
         model: String,
         price: Number,
+        sku: String,
+        stock: Number
       }
-    ],
-    default: undefined,
+    ], default: undefined
   },
   createdAt: {type: Date, default: Date.now}
 });
