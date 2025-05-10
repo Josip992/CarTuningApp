@@ -9,6 +9,7 @@ require("dotenv").config();
 const productRoutes = require("./routes/productRoutes");
 const vehicleRoutes = require("./routes/vehicleRoutes");
 const authRoutes = require("./routes/authRoutes.js");
+const cartRoutes = require("./routes/cartRoutes.js");
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use("/api/products", productRoutes);
 app.use("/api/vehicles", vehicleRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/cart", cartRoutes)
 
 const connectDB = async () => {
   try {
