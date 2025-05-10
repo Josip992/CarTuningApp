@@ -2,12 +2,16 @@ import { useEffect, useState } from "react";
 import {fetchCompatibleProducts} from "../api/productService"
 import { useVehicleContext } from "../contexts/VehicleContext";
 import "../css/VehicleListForm.css";
+import {addToCart} from "../api/cartService"
+import { useAuthContext } from "../contexts/AuthContext";
 
 function VehicleSpecificProducts() {
     const {selectedType} = useVehicleContext();
     const [compatibleProducts, setCompatibleProducts] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const categories = [...new Set(compatibleProducts.map(p => p.category))];
+
+    const { user } = useAuthContext();
 
     useEffect(()=>{
         const loadCompatibleProducts = async () => {
@@ -66,7 +70,9 @@ function VehicleSpecificProducts() {
                     .map((product, index) => (
                         <div
                             key={index}
-                            className="product-card">
+                            className="product-card"
+                            onClick={()=>addToCart(user.userId, product.productId, 1)}
+                            >
                             <div>
                                 <img
                                 src={`/images/products/${formatFileName(product.name)}.jpg`}

@@ -30,7 +30,7 @@ router.post("/register", authLimiter, async(req, res) => {
     
     if(userExists) return res.status(400).json({message: "User already exists"});
 
-    if(!passwordRegex.test(password)) return res.status(400).json({message: "Password has to have minimum 12 characters, at least 1 upper and lower case, special sign and 1 number"});
+    //if(!passwordRegex.test(password)) return res.status(400).json({message: "Password has to have minimum 12 characters, at least 1 upper and lower case, special sign and 1 number"});
 
     const user = await User.create({ username, email, password});
     const accessToken = createAccessToken(user);
