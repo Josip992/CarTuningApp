@@ -59,7 +59,6 @@ async function importAllProducts() {
               (variant, index, self) =>
                 index === self.findIndex(v => v.model === variant.model)
             );
-            console.log(product.variants);
             await Product.updateOne(
               { fits, name: product.name },
               {

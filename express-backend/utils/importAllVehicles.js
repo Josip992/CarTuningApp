@@ -35,7 +35,7 @@ async function importAllVehicles() {
       }
     }
   } catch (err) {
-    console.error("❌ Error importing vehicles:", err);
+    console.error("Error importing vehicles:", err);
   }
 }
 
