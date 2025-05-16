@@ -21,7 +21,12 @@ const createRefreshToken = (user) => {
 const authLimiter = rateLimiter({
     windowMs: 15*60*1000,
     max:5,
-    message: "Too many attempts, try again later"
+    handler: (req, res) => {
+        res.status(429).json({
+            message: "Too many login attempts, please try again later"
+        });
+    },
+    skipSuccessfulRequests: true
 });
 
 router.post("/register", authLimiter, async(req, res) => {

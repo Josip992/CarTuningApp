@@ -39,7 +39,6 @@ export const AuthProvider = ({ children }) => {
         localStorage.removeItem("accessToken");
     };
 
-
     const value = {
         user,
         setUser,
