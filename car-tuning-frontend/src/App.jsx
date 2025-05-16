@@ -3,6 +3,8 @@ import Navbar from "./components/Navbar";
 import Homepage from "./pages/Homepage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import Cartpage from "./pages/Cartpage";
+
 
 import { Routes, Route } from "react-router-dom";
 
@@ -19,6 +21,7 @@ function App() {
         <Route path="/" element={<Homepage/>}/>
         <Route path="/login" element={<LoginPage/>}/>
         <Route path="/register" element={<RegisterPage/>}/>
+        <Route path="/cart" element={<Cartpage/>}/>
       </Routes>
     </VehicleProvider>
     </AuthProvider>

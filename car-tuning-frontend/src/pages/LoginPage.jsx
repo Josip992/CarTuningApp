@@ -18,10 +18,13 @@ function LoginPage(){
         try {
             const response = await loginUser(identifier, password);
             login(response.user, response.accessToken);
-            navigate("/");
+            window.location.href = "/";
         } catch (err) {
-            console.error(err);
-            setError(err.response?.data?.message || "Login failed");
+            if (err.response) {
+                setError(err.response.data?.message || "Login failed");
+            } else {
+                setError("Network error or no response from server.");
+            }
         }
     };
     
