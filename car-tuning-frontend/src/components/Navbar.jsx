@@ -5,23 +5,24 @@ import { useAuthContext } from "../contexts/AuthContext";
 import { logoutUser } from "../api/authService";
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useVehicleContext } from "../contexts/VehicleContext";
 
 
 function Navbar(){
     const { user, logout } = useAuthContext();
-    const navigate = useNavigate();
+    const { resetVehicle } = useVehicleContext();
+
+    let navigate = useNavigate();
 
     const handleLogoutClick = async(e) => {
         e.preventDefault();
         try {
             const response = await logoutUser();
             logout();
-            setTimeout(() => {
-                console.log("navigating...");
-                navigate("/");
-              }, 100);
+            resetVehicle();
+            navigate("/");
             alert(response.message);
-        } catch (err) {
+        }catch (err) {
             console.error(err);
         }
     };

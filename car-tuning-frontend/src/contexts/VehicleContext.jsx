@@ -10,6 +10,13 @@ export const VehicleProvider = ({ children }) => {
     const [selectedType, setSelectedType] = useState("");
     const [selectedEngine, setSelectedEngine] = useState("");
     
+    const resetVehicle = () => {
+      setSelectedMake("");
+      setSelectedModel("");
+      setSelectedType("");
+      setSelectedEngine("");
+    };
+
   const value = {
     selectedMake,
     setSelectedMake,
@@ -18,10 +25,11 @@ export const VehicleProvider = ({ children }) => {
     selectedType,
     setSelectedType,
     selectedEngine,
-    setSelectedEngine
+    setSelectedEngine,
+    resetVehicle
   };
     
-  return <VehicleContext.Provider value= {value}>
+  return <VehicleContext.Provider value = {value}>
     {children}
   </VehicleContext.Provider>
 };

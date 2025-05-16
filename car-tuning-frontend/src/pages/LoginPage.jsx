@@ -2,23 +2,27 @@ import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 import { loginUser } from "../api/authService";
 import { useNavigate } from "react-router-dom";
+import { useVehicleContext } from "../contexts/VehicleContext";
 import "../css/Auth.css"
+
 
 function LoginPage(){
     const { login } = useAuthContext();
+    const { resetVehicle } = useVehicleContext();
 
     const [ identifier, setIdentifier ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ error, setError ] = useState("");
     const [ showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate();
+    let navigate = useNavigate();
 
     const handleSubmit = async(e) => {
         e.preventDefault();
         try {
             const response = await loginUser(identifier, password);
             login(response.user, response.accessToken);
-            window.location.href = "/";
+            resetVehicle();
+            navigate("/");
         } catch (err) {
             if (err.response) {
                 setError(err.response.data?.message || "Login failed");
