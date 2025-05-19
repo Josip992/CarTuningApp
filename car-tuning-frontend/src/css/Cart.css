@@ -1,0 +1,26 @@
+.cart-container  {
+    display: flex;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+.cart-items {
+    flex: 2;
+}
+.cart-summary {
+    flex: 1;
+}
+.cart-item {
+
+}
+.cart-item-image {
+
+}
+.product-name {
+
+}
+.product-quantity {
+
+}
+.product-price {
+
+}                   
