@@ -71,7 +71,7 @@ function VehicleSpecificProducts() {
                         <div
                             key={index}
                             className="product-card"
-                            onClick={()=>addToCart(user.id, product._id, 1)}
+                            onClick={()=>addToCart(user.id, product._id, 1, selectedType)}
                             >
                             <div>
                                 <img

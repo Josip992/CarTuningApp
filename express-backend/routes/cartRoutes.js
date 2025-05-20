@@ -4,7 +4,7 @@ const Product = require('../models/Product');
 const Cart = require('../models/Cart');
 
 router.post("/add", async (req,res) => {
-    const { userId, productId, quantity } = req.body;
+    const { userId, productId, quantity, vehicleType } = req.body;
     
     try{
         let cart = await Cart.findOne({ userId, status: "active"});
@@ -20,7 +20,7 @@ router.post("/add", async (req,res) => {
         if(itemExists){
             itemExists.quantity += quantity;
         }else{
-            cart.items.push({ productId, quantity });
+            cart.items.push({ productId, quantity, vehicleType });
         }
         await cart.save();
         res.status(200).json(cart)

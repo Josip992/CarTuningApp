@@ -18,7 +18,6 @@ router.get("/", async (req, res) => {
 router.get("/compatible/:vehicleModel", async(req,res) => {
     try{
         const { vehicleModel } = req.params;
-        console.log(vehicleModel);
         const compatibleProducts = await Product.aggregate([
             {
               $match: {

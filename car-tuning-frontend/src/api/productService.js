@@ -1,4 +1,3 @@
-import axios from "axios";
 import axiosInstance from "../services/axiosInstance";
 const API_BASE = "http://localhost:5000/api/products"
 
