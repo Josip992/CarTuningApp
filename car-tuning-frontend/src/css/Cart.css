@@ -7,29 +7,29 @@
 }
 .cart-items {
     flex: 2;
-}
-.cart-items:after {
-    content: '';
-    border-bottom: 0.5px solid #333;
-    width: 85%;
-    display: block;
+    border-right: 0.2px solid #333;
+    margin-right: 50px;
+    margin-left: 25px;
 }
 .cart-summary {
     flex: 1;
     border: 1px solid #333;
     border-radius: 5px;
-    margin-right: 100px;
+    margin-right: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
     gap: 10px;
+    border-left: 0.2px solid #333;
 }
 .cart-item {
     display: flex;
     gap: 20px;
     padding: 20px;
+    border-bottom: 0.2px solid #333;
+    width: 90%;
 }
 .cart-item-counter {
     display: flex;
@@ -38,6 +38,7 @@
 }
 .cart-item-details {
     flex-direction: column;
+    font-size: large;
 }
 .cart-item-image {
     border: 1px solid #333;
@@ -45,8 +46,8 @@
     width: 100px;           
     aspect-ratio: 1 / 1;   
     object-fit: cover;
-    margin-right: 50px;     
-    margin-left: 30px;
+    margin-right: 20px;     
+    margin-left: 20px;
     overflow: hidden;
     position: relative;
 }
@@ -74,22 +75,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: medium;
 }
 .product-price {
-    border: 1px solid #333;
-    border-radius: 5px;
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}                   
-.stock-details{
     border: 1px solid #333;
     border-radius: 5px;
     width: 20%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}                   
+.stock-details {
+    border: 1px solid #333;
+    border-radius: 5px;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: medium;
+}
+.stripe-payment {
+    margin-top: 50px;
+    border: 2px solid #333;
+}
+.stripe-card-details {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #333;
+}
+.stripe-btn {
+    display: flex;
     justify-content: center;
     align-items: center;
 }

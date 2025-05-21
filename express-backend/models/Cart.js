@@ -9,7 +9,7 @@ const CartItemSchema = new mongoose.Schema({
 const CartSchema = new mongoose.Schema({
     userId: {type: String, required: true},
     items: [CartItemSchema],
-    status: {type: String, enum: ["active", "pending"], default: "active"}
+    status: {type: String, enum: ["active", "pending", "ordered", "cancelled"], default: "active"}
 });
 
 module.exports = mongoose.model("Cart", CartSchema);

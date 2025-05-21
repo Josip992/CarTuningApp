@@ -13,3 +13,15 @@ export const fetchCart = async (userId) => {
     const response = await axiosInstance.get(API_BASE + userId);
     return response.data;
 };
+
+export const checkoutCart = async (userId) => {
+    console.log("cartCheckout called");
+    const response = await axiosInstance.post(API_BASE + "checkout", { userId });
+    return response.data;
+};
+
+export const completeCartCheckout = async (userId) => {
+    console.log("completeCartCheckout called");
+    const response = await axiosInstance.post(API_BASE + "complete-checkout", { userId });
+    return response.data;
+};
