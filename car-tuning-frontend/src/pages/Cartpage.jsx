@@ -6,7 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import CheckoutForm from '../components/CheckoutForm';
 
-const stripePromise = loadStripe("pk_test_51RQrafGapVmcdF4EI2Be3X3bXFERhzq5ZHsFsKmhJuTXVQwyMwvZ3bVIji7PUmb5kIM9MEyP4SBBqYmaifDGpYHk00KFDk456a");
+const stripePromise = loadStripe(");
 
 function CartPage(){
     const {user} = useAuthContext();
